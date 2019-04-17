@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Grades</title>
+</head>
+<body background = "https://www.itmagazine.us/wp-content/uploads/2017/10/6f6499a403cf64afea180b6419def4ef.jpg">
+
+<h1>See all students grades</h1>
+
+<table  border="1">
+    <thead>
+    <tr>
+        <th>grades.ID_STUDENT</th>
+        <th>grades.NAME_STUDENT</th>
+        <th>grades.NAME_COURSE</th>
+        <th>grades.GRADES</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="grades : ${ gradesList }">
+
+        <td th:text="${ grades.idStudent }">ID_STUDENT</td>
+        <td th:text="${ grades.nameStudent }"></td>
+        <td th:text="${ grades.nameCourse }"></td>
+        <td th:text="${ grades.grades }"></td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<br/>
+<br/>
+
+
+</body>
+
+</html>

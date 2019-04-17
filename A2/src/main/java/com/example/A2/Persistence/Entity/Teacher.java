@@ -1,23 +1,15 @@
 package com.example.A2.Persistence.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.FetchType;
-
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "teacher")
-
 public class Teacher {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idTeacher;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id_teacher", nullable = false)
+    public Integer idTeacher;
 
     @Column
     private String firstName;
@@ -32,11 +24,11 @@ public class Teacher {
     private List<Course> courses;
 
 
-    public Integer getIdTeacher() {
+    public Integer getId() {
         return idTeacher;
     }
 
-    public void setIdTeacher(Integer id) {
+    public void setId(Integer id) {
         this.idTeacher = id;
     }
 
@@ -76,7 +68,7 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "teacher[" + idTeacher + "] " + firstName + " ";
+        return "teacher[" + idTeacher + "] " + firstName + " " + lastName;
     }
 
 

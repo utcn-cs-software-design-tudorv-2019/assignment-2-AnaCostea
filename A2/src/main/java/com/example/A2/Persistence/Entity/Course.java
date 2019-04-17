@@ -1,11 +1,11 @@
 package com.example.A2.Persistence.Entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
 @Table(name = "course")
-
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,8 +14,15 @@ public class Course {
     @Column
     private String name;
 
-    @Column
-    private Integer idTeacher;
+    @ManyToOne
+    @JoinColumn(name = "teacher")
+    @NotNull
+    private Teacher teacher;
+
+   /* @ManyToOne
+    @JoinColumn(name = "student")
+    @NotNull
+    private Student student;*/
 
     public Integer getIdCourse() {
         return idCourse;
@@ -33,20 +40,18 @@ public class Course {
         this.name = name;
     }
 
-    public Integer getIdTeacher() {
-        return idTeacher;
+    public Teacher getTeacher() { return teacher; }
+
+    public void setTeacher(Teacher teacher) {this.teacher = teacher;}
+
+  /*  public Student getStudent() { return student; }
+
+    public void setStudent(Student student) {this.student = student;} */
+
+
+    @Override
+    public String toString() {
+        return "course[" + idCourse + "] " + name + " ---> " + teacher;
     }
 
-    public void setIdTeacher(Integer idTeacher) {
-        this.idTeacher = idTeacher;
-    }
-
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Course{" +
-                "id=" + idCourse +
-                ", name='" + name + '\'' +
-                ", idTeacher=" + idTeacher +
-                '}';
-    }
 }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+
+<!--<body background = "https://images2.alphacoders.com/746/74632.jpg">-->
+<body background = "https://www.itmagazine.us/wp-content/uploads/2017/10/6f6499a403cf64afea180b6419def4ef.jpg">
+
+<h1>Welcome, student user !</h1>
+
+<table  border="1">
+<thead>
+<tr>
+    <th>student.ID</th>
+    <th>student.NAME</th>
+    <th>student.GROUP</th>
+    <th>student.COURSE</th>
+    <th>student.GRADES</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="student : ${ studentsWithCoursesList }">
+
+    <td th:text="${ student.id }">ID</td>
+    <td th:text="${ student.studentName }"></td>
+    <td th:text="${ student.studentGroup }"></td>
+    <td th:text="${ student.courseName }"></td>
+    <td th:text="${ student.studentGrades }"></td>
+    </td>
+</tr>
+</tbody>
+</table>
+
+<br/>
+<br/>
+<br/>
+
+<form   th:object="${newStudent}" method = "POST">
+    <div class="col-sm-12">
+        <label>ID</label>
+        <input placeholder="Student ID" name="ID"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Name</label>
+        <input placeholder="Student Name" name="Name"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Group</label>
+        <input placeholder="Student Group" name="Group"/>
+    </div>
+    <div class="col-sm-12">
+        <label>CourseName</label>
+        <input placeholder="Student's Course" name="Course Name"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Grades</label>
+        <input placeholder="Student Grades" name="Grades"/>
+    </div>
+
+ <!--   <input type="submit" name = "action" value="Add Student"/>
+    <input type="submit" name = "action" value="Update Student"/>
+    <input type="submit" name = "action" value="Delete Student"/>  -->
+
+    <button type="submit" class = "btn btn-primary" name = "action" value="Create Student">ADD Student</button>
+    <button type="submit" class = "btn btn-primary" name = "action" value="Update Student">EDIT Student</button>
+    <button type="submit" class = "btn btn-primary" name = "action" value="Delete Student">DELETE Student</button>
+  </form>
+
+  <form>
+      <div style="margin:50px">
+          <!--
+           <script>
+               var myWindow;
+               function openw(){
+               myWindow=window.open("file:///C:/Users/Anneh/Desktop/sem2!!!/PS/Assignment2/A2/src/main/resources/templates/grades_view.html","_self")
+               }
+           </script>
+       <button  type="submit" onclick="openw()" >VIEW ALL GRADES</button>-->
+        <button  type="submit" onclick=parent.open("http://localhost:8090/course") >VIEW ALL COURSES</button>
+
+    </div>
+</form>
+
+</body>
+
+</html>

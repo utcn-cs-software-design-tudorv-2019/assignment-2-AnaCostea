@@ -4,6 +4,7 @@ package com.example.A2.Business;
 import com.example.A2.Persistence.Entity.Course;
 import com.example.A2.Persistence.Repo.CourseRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -20,19 +21,23 @@ public class CourseService {
     }
 
 
-    public List<Course> getAllCoursesByTeacherId(Integer id)
+    public List<Course> getAllCoursesByTeacherFirstName(String firstName)
     {
         List<Course> coursesFilteredList = null;
 
-        if (id == 0)
+        if (StringUtils.isEmpty(firstName))
         {
             coursesFilteredList = courseRepository.findAll();
         }
         else
         {
-            coursesFilteredList = courseRepository.findAllByTeacherId(id);
+            coursesFilteredList = courseRepository.findAllByTeacherFirstName(firstName);
         }
 
         return coursesFilteredList;
+    }
+
+    public Course create(Course newCourse){
+        return courseRepository.save(newCourse);
     }
 }

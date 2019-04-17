@@ -5,11 +5,10 @@
     <title>Teachers</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-
 </head>
 
-<body>
-
+<body background = "https://www.itmagazine.us/wp-content/uploads/2017/10/6f6499a403cf64afea180b6419def4ef.jpg">
+<h1>Welcome, admin user !</h1>
 
 <table  border="1">
     <thead>
@@ -24,7 +23,7 @@
     <tbody>
     <tr th:each="teacher : ${ teachersWithCoursesList }">
 
-        <td th:text="${ teacher.idTeacher }">ID</td>
+        <td th:text="${ teacher.idTeacher }"></td>
         <td th:text="${ teacher.firstName }"></td>
         <td th:text="${ teacher.lastName }"></td>
         <td th:text="${ teacher.email }"></td>
@@ -32,14 +31,11 @@
             <p th:each="course: ${ teacher.courses  }">
                 <span th:text="${course.idCourse}"></span>
                 <span th:text="${course.name}"></span>
+                <span th:text="${course.teacherId}"></span>
+                <span th:text="${course.teacherName}"></span>
+
             </p>
         </td>
-
-
-
-
-
-
     </tr>
     </tbody>
 </table>
@@ -49,6 +45,15 @@
 <br/>
 
 <form   th:object="${newTeacher}" method="post">
+
+    <div class="col-sm-12">
+        <label>ID</label>
+        <input placeholder="Teacher ID" name="ID"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Email</label>
+        <input placeholder="Teacher email" name="email"/>
+    </div>
     <div class="col-sm-12">
         <label>First name</label>
         <input placeholder="Teacher First Name" name="firstName"/>
@@ -57,16 +62,35 @@
         <label>Last name</label>
         <input placeholder="Teacher Last Name" name="lastName"/>
     </div>
-    <div class="col-sm-12">
-        <label>speciality</label>
-        <input placeholder="Teacher speciality" name="speciality"/>
-    </div>
-    <div class="col-sm-12">
-        <label>Email</label>
-        <input placeholder="Teacher email" name="email"/>
-    </div>
 
-    <button type="submit" class = "btn btn-primary">ADD Teacher</button>
+
+    <!--        <input type="submit" name = "action" value="Create Teacher"/>
+           <input type="submit" name = "action" value="Update Teacher"/>
+           <input type="submit" name = "action" value="Delete Teacher"/> -->
+
+
+               <button type="submit" class = "btn btn-primary" name = "action" value="Create Teacher">ADD Teacher</button>
+              <button type="submit" class = "btn btn-primary" name = "action" value="Update Teacher">EDIT Teacher</button>
+               <button type="submit" class = "btn btn-primary" name = "action" value="Delete Teacher">DELETE Teacher</button>
+
+</form>
+
+
+<form>
+    <div style="margin:50px">
+        <!--
+         <script>
+             var myWindow;
+             function openw(){
+             myWindow=window.open("file:///C:/Users/Anneh/Desktop/sem2!!!/PS/Assignment2/A2/src/main/resources/templates/grades_view.html","_self")
+             }
+         </script>
+     <button  type="submit" onclick="openw()" >VIEW ALL GRADES</button>-->
+        <button  type="submit" onclick=parent.open("http://localhost:8090/grades") >VIEW ALL GRADES</button>
+
+    </div>
 </form>
 
 </body>
+
+</html>

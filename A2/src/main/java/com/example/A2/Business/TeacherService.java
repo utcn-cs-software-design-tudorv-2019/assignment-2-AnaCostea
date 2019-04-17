@@ -15,14 +15,31 @@ public class TeacherService {
 
     @Inject
     TeacherRepository teacherRepository;
+   /* public TeacherService(TeacherRepository teacherRepository) {
+        this.teacherRepository=teacherRepository;
+    }*/
 
     public List<Teacher> getAllTeachersWithCourses()
     {
         return teacherRepository.findAll();
     }
 
-    public Teacher create(Teacher newTeacher)
+    public void create(Teacher newTeacher)
     {
-        return teacherRepository.save(newTeacher);
+        System.out.println("HERE!"+newTeacher);
+        teacherRepository.save(newTeacher);
+    }
+
+    public void update( Teacher newTeacher, Teacher oldTeacher){
+       if(oldTeacher == null){
+           System.out.println("ERROR! Teacher does not exist !!!");
+       } else{
+           teacherRepository.delete(oldTeacher);
+           teacherRepository.save(newTeacher);
+       }
+    }
+
+    public void delete(Teacher teacher){
+         teacherRepository.delete(teacher);
     }
 }

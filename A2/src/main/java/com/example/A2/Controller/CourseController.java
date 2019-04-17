@@ -19,9 +19,9 @@ public class CourseController {
     private CourseService courseService;
 
     @RequestMapping(value =  "/course", method = RequestMethod.GET)
-    public ModelAndView getCourses(@RequestParam(name = "id", required = false) Integer idTeacher)
+    public ModelAndView getCourses(@RequestParam(name = "fn", required = false) String firstName)
     {
-        List<Course> courseList = courseService.getAllCoursesByTeacherId(idTeacher);
+        List<Course> courseList = courseService.getAllCoursesByTeacherFirstName(firstName);
 
         ModelAndView mav = new ModelAndView("course_view");
         mav.addObject("courseWithTeachersList", courseList);

@@ -1,15 +1,6 @@
 package com.example.A2.Persistence.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.FetchType;
-
-import java.util.List;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "student")
@@ -17,66 +8,62 @@ import java.util.List;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idStudent;
+    @Column(name = "id", unique = true, nullable = false)
+    private Integer id;
 
     @Column
-    private String name;
+    private String studentName;
 
     @Column
-    private int group;
-
-    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
-    private List<Course> courses;
+    private Integer studentGroup;
 
     @Column
-    private int grades;
+    private String courseName;
 
+    @Column
+    private Integer studentGrades;
 
-    public Integer getIdStudent() {
-        return idStudent;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdStudent(Integer id) {
-        this.idStudent = id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setName(String firstName) {
-        this.name = firstName;
+    public void setStudentName(String name) {
+        this.studentName = name;
     }
 
-
-    public int getGroup() {
-        return group;
+    public Integer getStudentGroup() {
+        return studentGroup;
     }
 
-    public void setGroup(int group) {
-        this.group = group;
+    public void setStudentGroup(Integer group) {
+        this.studentGroup = group;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public String getCourseName() { return courseName;}
+
+    public void setCourseName(String courseName) {this.courseName = courseName;}
+
+    public Integer getStudentGrades() {
+        return studentGrades;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setStudentGrades(Integer grades) {
+        this.studentGrades = grades;
     }
 
-    public int getGrades() {
-        return grades;
-    }
-
-    public void setGrades(int grades) {
-        this.grades = grades;
-    }
 
 
     @Override
     public String toString() {
-        return "student[" + idStudent + "] " + name + " " ;
+        return "student[" + id + "] " + studentName + " " ;
     }
 
 
