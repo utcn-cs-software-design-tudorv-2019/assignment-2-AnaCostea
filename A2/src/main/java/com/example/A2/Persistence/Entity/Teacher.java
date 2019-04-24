@@ -4,11 +4,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "teacher")
+@Table(name = "teacher12")
 public class Teacher {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id_teacher", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "teacher_id_seq")
+    @SequenceGenerator(name="teacher_id_seq", sequenceName = "teacher_id_seq", allocationSize=1)
+    @Column(name = "id", nullable = false)
     public Integer idTeacher;
 
     @Column
@@ -23,6 +24,9 @@ public class Teacher {
     @OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
     private List<Course> courses;
 
+    public Teacher(){
+        this.idTeacher = 0;
+    }
 
     public Integer getId() {
         return idTeacher;

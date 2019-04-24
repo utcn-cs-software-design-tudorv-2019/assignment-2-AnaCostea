@@ -7,8 +7,10 @@ import javax.persistence.*;
 public class Grades {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer idStudent;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "grades_id_seq")
+    @SequenceGenerator(name="grades_id_seq", sequenceName = "grades_id_seq", allocationSize=1)
+    @Column(name = "id_grade", nullable = false)
+    public Integer idGrades;
 
     @Column
     public String nameStudent;
@@ -19,28 +21,36 @@ public class Grades {
     @Column
     public Integer grades;
 
-    public Integer getId_student() {
-        return idStudent;
+    public Grades(){}
+
+    public Grades(String nameStudent, String nameCourse, Integer grades) {
+        this.nameStudent = nameStudent;
+        this.nameCourse = nameCourse;
+        this.grades = grades;
     }
 
-    public void setId_student(Integer id_student) {
-        this.idStudent = id_student;
+    public Integer getIdGrades() {
+        return idGrades;
     }
 
-    public String getName_student() {
+    public void setIdGrades(Integer idGrades) {
+        this.idGrades = idGrades;
+    }
+
+    public String getNameStudent() {
         return nameStudent;
     }
 
-    public void setName_student(String name_student) {
-        this.nameCourse = name_student;
+    public void setNameStudent(String nameStudent) {
+        this.nameStudent = nameStudent;
     }
 
-    public String getName_course() {
+    public String getNameCourse() {
         return nameCourse;
     }
 
-    public void setName_course(String name_course) {
-        this.nameCourse = name_course;
+    public void setNameCourse(String nameCourse) {
+        this.nameCourse = nameCourse;
     }
 
     public Integer getGrades() {

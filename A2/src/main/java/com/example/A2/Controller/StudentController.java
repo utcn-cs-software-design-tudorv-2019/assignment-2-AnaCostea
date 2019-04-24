@@ -20,11 +20,11 @@ public class StudentController {
     @RequestMapping(value = "/student", method = RequestMethod.GET)
     public ModelAndView getStudents()
     {
-        List<Student> studentList = studentService.getAllStudentssWithCourses();
+        List<Student> studentList = studentService.getAllStudentsWithCourses();
 
         ModelAndView mav = new ModelAndView("student_view");
         mav.addObject("studentsWithCoursesList", studentList);
-
+        mav.addObject("newStudent", new Student());
         return mav;
 
     }
@@ -33,7 +33,7 @@ public class StudentController {
     @RequestMapping(value = "/student", method = RequestMethod.POST)
     public ModelAndView postStudent(@RequestParam(value = "action") String action,@ModelAttribute(value = "newStudent") Student newStudent)
     {
-        if(action.equals("Add Student"))
+        if(action.equals("Create Student"))
             studentService.create(newStudent);
         else if(action.equals("Update Student"))
             studentService.update(new Student(), newStudent);
@@ -41,6 +41,7 @@ public class StudentController {
             studentService.delete(newStudent);
         return new ModelAndView("redirect:student");
     }
+}
 /*
     @RequestMapping(value = "/student", method = RequestMethod.PUT)
     public ModelAndView updateStudent(@RequestParam(value = "action") String action,@ModelAttribute(value = "newStudent") Student oldStudent)
@@ -57,4 +58,4 @@ public class StudentController {
         return new ModelAndView("redirect : student");
     }
  */
-}
+

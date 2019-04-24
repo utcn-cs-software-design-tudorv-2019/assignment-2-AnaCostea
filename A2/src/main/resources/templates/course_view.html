@@ -7,52 +7,37 @@
 
 </head>
 
-<body background = "https://www.itmagazine.us/wp-content/uploads/2017/10/6f6499a403cf64afea180b6419def4ef.jpg">
-<h1>Welcome to Courses section !</h1>
+<body background="https://givewings.org/wp-content/uploads/2016/09/secure.jpg">
+<h1><font color="white">Welcome to Courses section !</font></h1>
 
 <table  border="1">
     <thead>
     <tr>
-        <th>course.ID</th>
-        <th>course.NAME</th>
+        <th><font color="white">course.ID</font></th>
+        <th><font color="white">course.NAME</font></th>
    <!--     <th>course.STUDENT</th>
              <th>student.ID</th>
              <th>student.NAME</th>
              <th>student.GROUP</th>
              <th>student.COURSE_NAME</th>
              <th>student.GRADES</th>   -->
-        <th>course.TEACHER</th>
-            <th>teacher.ID</th>
-            <th>teacher.FIRST_NAME</th>
-            <th>teacher.LAST_NAME</th>
-            <th>teacher.EMAIL</th>
+        <th><font color="white">course.TEACHER</font></th>
+        <th><font color="white">teacher.ID</font></th>
+        <th><font color="white">teacher.FIRST_NAME</font></th>
+        <th><font color="white">teacher.LAST_NAME</font></th>
+        <th><font color="white">teacher.EMAIL</font></th>
 
     </tr>
     </thead>
     <tbody>
     <tr th:each="course : ${ courseWithTeachersList }">
-        <td th:text="${ course.idCourse }">ID</td>
-        <td th:text="${ course.name }">name</td>
-
-        <!--
-        <td>----</td>
-        <td th:text="${ course.student.id }">ID</td>
-        <td th:text="${ course.student.name }">fn</td>
-        <td th:text="${ course.student.group }">ln</td>
-        <td th:text="${ course.student.courseName }">em</td>
-        <td th:text="${ course.student.grades }">ln</td>
--->
+        <td th:text="${ course.id }" style="color:#0000ff">ID</td>
+        <td th:text="${ course.name }" style="color:#0000ff">name</td>
         <td>----></td>
-        <td th:text="${ course.teacher.id }">ID</td>
-        <td th:text="${ course.teacher.firstName }">fn</td>
-        <td th:text="${ course.teacher.lastName }">ln</td>
-        <td th:text="${ course.teacher.email }">em</td>
-
-        <!-- 				<td>
-                            <a class="btn btn-warning btn-xs" href="admin/movieEdit.html" th1:href="@{/admin/movieEdit(id=${movie.id})}">Edit</a>
-                            <a class="btn btn-danger btn-xs" href="admin/movieDelete.html" th1:href="@{/admin/movieDelete(id=${movie.id})}">Delete</a>
-                        </td>
-         -->
+        <td th:text="${ course.teacher.id }" style="color:#0000ff">ID</td>
+        <td th:text="${ course.teacher.firstName }" style="color:#0000ff">fn</td>
+        <td th:text="${ course.teacher.lastName }" style="color:#0000ff">ln</td>
+        <td th:text="${ course.teacher.email }" style="color:#0000ff">em</td>
     </tr>
     </tbody>
 </table>
@@ -61,18 +46,18 @@
 <br/>
 <br/>
 
-<!-- <form   th:object="${newCourse}" method="post">
+ <form   th:object="${newCourse}" method="POST">
 			<div class="col-sm-12">
-				<label>Course name</label>
+                <label><font color="gray">Course name</font></label>
 				<input placeholder="Course Name" name="name"/>
 			</div>
 			<div class="col-sm-12">
-				<label>Teacher</label>
-				<input placeholder="Teacher" name="teacher1"/>
+                <label><font color="gray">Teacher</font></label>
+				<input placeholder="Teacher" name="teacher"/>
 			</div>
 
 			<button type="submit" class = "btn btn-primary">ADD Teacher</button>
-</form> -->
+</form>
 
 </body>
 

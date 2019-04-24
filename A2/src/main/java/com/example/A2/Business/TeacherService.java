@@ -15,9 +15,6 @@ public class TeacherService {
 
     @Inject
     TeacherRepository teacherRepository;
-   /* public TeacherService(TeacherRepository teacherRepository) {
-        this.teacherRepository=teacherRepository;
-    }*/
 
     public List<Teacher> getAllTeachersWithCourses()
     {
@@ -34,8 +31,11 @@ public class TeacherService {
        if(oldTeacher == null){
            System.out.println("ERROR! Teacher does not exist !!!");
        } else{
-           teacherRepository.delete(oldTeacher);
-           teacherRepository.save(newTeacher);
+          newTeacher.setId(oldTeacher.getId());
+          newTeacher.setFirstName(newTeacher.getFirstName());
+          newTeacher.setLastName(newTeacher.getLastName());
+          newTeacher.setEmail(newTeacher.getEmail());
+          teacherRepository.save(newTeacher);
        }
     }
 

@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="design.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
-<body background = "https://www.itmagazine.us/wp-content/uploads/2017/10/6f6499a403cf64afea180b6419def4ef.jpg">
+<body background="https://givewings.org/wp-content/uploads/2016/09/secure.jpg">
 
-            <h1>Welcome to TUCN Department !</h1>
-            <form onsubmit="return validateForm()">
-                Username:<br>
+<h1><font color="white">Welcome to TUCN Department !</font></h1>
+            <form onsubmit="return validateForm()"><font color="white">
+                Username:</font><br>
                 <input id = "inputuser" type="text" name="Username" style="border:1px solid black"  required><br>
-                Password:<br>
+                <font color="white">Password:</font><br>
                 <input id = "inputpass" type="password" name="Password" style="border:1px solid black" required><br>
 
-                <input id = "r1" type="radio" name ="option" value = "teacher"> Teacher <br>
-                <input id = "r2" type="radio" name ="option" value = "student"> Student <br>
+                <input id = "r1" type="radio" name ="option" value = "teacher"><font color="white"> Teacher </font><br>
+                <input id = "r2" type="radio" name ="option" value = "student"><font color="white"> Student </font><br>
                 <input type=button onClick = "validateForm()" value = 'Login as Student'>
                 <input type=button onClick = "validateForm()" value = 'Login as Teacher'>
 

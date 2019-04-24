@@ -22,4 +22,8 @@ public class GradesService {
         return gradesRepository.save(newGrade);
     }
 
+    public void delete(Grades grade){
+        gradesRepository.delete(grade);
+    }
+
 }

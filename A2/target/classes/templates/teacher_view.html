@@ -7,33 +7,32 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 
-<body background = "https://www.itmagazine.us/wp-content/uploads/2017/10/6f6499a403cf64afea180b6419def4ef.jpg">
-<h1>Welcome, admin user !</h1>
+<body background="https://givewings.org/wp-content/uploads/2016/09/secure.jpg">
+<h1><font color="white">Welcome, admin user !</font></h1>
 
 <table  border="1">
     <thead>
     <tr>
-        <th>teacher.ID</th>
-        <th>teacher.FIRSTNAME</th>
-        <th>teacher.LASTNAME</th>
-        <th>teacher.EMAIL</th>
-        <th>course entire data</th>
+        <th><font color="white">teacher.ID</font></th>
+        <th><font color="white">teacher.FIRSTNAME</font></th>
+        <th><font color="white">teacher.LASTNAME</font></th>
+        <th><font color="white">teacher.EMAIL</font></th>
+        <th><font color="white">course entire data</font></th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="teacher : ${ teachersWithCoursesList }">
 
-        <td th:text="${ teacher.idTeacher }"></td>
-        <td th:text="${ teacher.firstName }"></td>
-        <td th:text="${ teacher.lastName }"></td>
-        <td th:text="${ teacher.email }"></td>
-        <td th:text="${ teacher.courses }">
-            <p th:each="course: ${ teacher.courses  }">
-                <span th:text="${course.idCourse}"></span>
-                <span th:text="${course.name}"></span>
-                <span th:text="${course.teacherId}"></span>
-                <span th:text="${course.teacherName}"></span>
-
+        <td th:text="${ teacher.idTeacher }" style="color:#0000ff"></td>
+        <td th:text="${ teacher.firstName }" style="color:#0000ff"></td>
+        <td th:text="${ teacher.lastName }" style="color:#0000ff"></td>
+        <td th:text="${ teacher.email }" style="color:#0000ff"></td>
+        <td th:text="${ teacher.courses }" style="color:#0000ff">
+            <p th:each="course: ${ teacher.courses  }" style="color:#0000ff">
+                <span th:text="${course.idCourse}" style="color:#0000ff"></span>
+                <span th:text="${course.name}" style="color:#0000ff"></span>
+                <span th:text="${course.teacherId}" style="color:#0000ff"></span>
+                <span th:text="${course.teacherName}" style="color:#0000ff"></span>
             </p>
         </td>
     </tr>
@@ -44,22 +43,22 @@
 <br/>
 <br/>
 
-<form   th:object="${newTeacher}" method="post">
+<form   th:object="${newTeacher}" method="POST">
 
-    <div class="col-sm-12">
+<!--    <div class="col-sm-12">
         <label>ID</label>
-        <input placeholder="Teacher ID" name="ID"/>
-    </div>
+        <input placeholder="Teacher ID" name="idTeacher"/>
+    </div>-->
     <div class="col-sm-12">
-        <label>Email</label>
+        <label><font color="gray">Email</font></label>
         <input placeholder="Teacher email" name="email"/>
     </div>
     <div class="col-sm-12">
-        <label>First name</label>
+        <label><font color="gray">First name</font></label>
         <input placeholder="Teacher First Name" name="firstName"/>
     </div>
     <div class="col-sm-12">
-        <label>Last name</label>
+        <label><font color="gray">Last name</font></label>
         <input placeholder="Teacher Last Name" name="lastName"/>
     </div>
 
@@ -78,14 +77,6 @@
 
 <form>
     <div style="margin:50px">
-        <!--
-         <script>
-             var myWindow;
-             function openw(){
-             myWindow=window.open("file:///C:/Users/Anneh/Desktop/sem2!!!/PS/Assignment2/A2/src/main/resources/templates/grades_view.html","_self")
-             }
-         </script>
-     <button  type="submit" onclick="openw()" >VIEW ALL GRADES</button>-->
         <button  type="submit" onclick=parent.open("http://localhost:8090/grades") >VIEW ALL GRADES</button>
 
     </div>

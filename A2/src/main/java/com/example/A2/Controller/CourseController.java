@@ -4,6 +4,7 @@ package com.example.A2.Controller;
 import com.example.A2.Business.CourseService;
 import com.example.A2.Persistence.Entity.Course;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,8 +26,16 @@ public class CourseController {
 
         ModelAndView mav = new ModelAndView("course_view");
         mav.addObject("courseWithTeachersList", courseList);
+        mav.addObject("newCourse", new Course());
 
         return mav;
+    }
+
+    @RequestMapping(value = "/course", method = RequestMethod.POST)
+    public ModelAndView postTeacher(@ModelAttribute(value = "newCourse") Course newCourse)
+    {
+        courseService.create(newCourse);
+        return new ModelAndView("redirect:course");
     }
 
 }

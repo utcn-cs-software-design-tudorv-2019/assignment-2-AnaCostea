@@ -5,11 +5,12 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "course")
+@Table(name = "course12")
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCourse;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_id_course_seq")
+    @SequenceGenerator(name="course_id_course_seq", sequenceName = "course_id_course_seq", allocationSize=1)
+    public Integer id;
 
     @Column
     private String name;
@@ -19,17 +20,12 @@ public class Course {
     @NotNull
     private Teacher teacher;
 
-   /* @ManyToOne
-    @JoinColumn(name = "student")
-    @NotNull
-    private Student student;*/
-
     public Integer getIdCourse() {
-        return idCourse;
+        return id;
     }
 
     public void setIdCourse(Integer id) {
-        this.idCourse = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -44,14 +40,10 @@ public class Course {
 
     public void setTeacher(Teacher teacher) {this.teacher = teacher;}
 
-  /*  public Student getStudent() { return student; }
-
-    public void setStudent(Student student) {this.student = student;} */
-
 
     @Override
     public String toString() {
-        return "course[" + idCourse + "] " + name + " ---> " + teacher;
+        return "course[" + id + "] " + name + " ---> " + teacher;
     }
 
 }

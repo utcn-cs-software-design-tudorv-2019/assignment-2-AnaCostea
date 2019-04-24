@@ -12,7 +12,7 @@ public class StudentService {
     @Inject
     StudentRepository studentRepository;
 
-    public List<Student> getAllStudentssWithCourses()
+    public List<Student> getAllStudentsWithCourses()
     {
         return studentRepository.findAll();
     }
@@ -22,13 +22,17 @@ public class StudentService {
         return studentRepository.save(newStudent);
     }
 
-    public void update(Student newStudent, Student oldStudent){
-        if(oldStudent == null){
+    public Student update(Student newStudent, Student oldStudent){
+       /* if(oldStudent == null){
             System.out.println("ERROR! Student does not exist !!!");
-        } else{
-            studentRepository.delete(oldStudent);
-            studentRepository.save(newStudent);
-        }
+        } else{*/
+            newStudent.setId(oldStudent.getId());
+            newStudent.setStudentName(newStudent.getStudentName());
+            newStudent.setStudentGroup(newStudent.getStudentGroup());
+            newStudent.setCourseName(newStudent.getCourseName());
+            newStudent.setStudentGrades(newStudent.getStudentGrades());
+
+        return studentRepository.save(newStudent);
     }
 
 

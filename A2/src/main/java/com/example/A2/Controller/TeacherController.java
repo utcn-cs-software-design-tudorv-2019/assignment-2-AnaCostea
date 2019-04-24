@@ -51,11 +51,11 @@ public class TeacherController {
    @RequestMapping(value = "/teacher", method = RequestMethod.POST)
    public ModelAndView postTeacher(@RequestParam(value = "action") String action, @ModelAttribute(value = "newTeacher") Teacher newTeacher)
    {
-       if(action.equals("Add Teacher"))
+       if(action.equals("Create Teacher"))
            teacherService.create(newTeacher);
        else if(action.equals("Update Teacher"))
            teacherService.update(new Teacher(), newTeacher);
-       else
+       else if(action.equals("Delete Teacher"))
            teacherService.delete(newTeacher);
        return new ModelAndView("redirect:teacher");
    }

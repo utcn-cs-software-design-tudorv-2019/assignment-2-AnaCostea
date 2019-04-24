@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Grades</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
-<body background = "https://www.itmagazine.us/wp-content/uploads/2017/10/6f6499a403cf64afea180b6419def4ef.jpg">
 
-<h1>See all students grades</h1>
+<body background="https://givewings.org/wp-content/uploads/2016/09/secure.jpg">
+
+<h1><font color="white">See all students grades</font></h1>
 
 <table  border="1">
     <thead>
     <tr>
-        <th>grades.ID_STUDENT</th>
-        <th>grades.NAME_STUDENT</th>
-        <th>grades.NAME_COURSE</th>
-        <th>grades.GRADES</th>
+        <th><font color="white">grades.ID</font></th>
+        <th><font color="white">grades.NAME_STUDENT</font></th>
+        <th><font color="white">grades.NAME_COURSE</font></th>
+        <th><font color="white">grades.GRADES</font></th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="grades : ${ gradesList }">
-
-        <td th:text="${ grades.idStudent }">ID_STUDENT</td>
-        <td th:text="${ grades.nameStudent }"></td>
-        <td th:text="${ grades.nameCourse }"></td>
-        <td th:text="${ grades.grades }"></td>
+        <td th:text="${ grades.idGrades }" style="color:#0000ff">ID</td>
+        <td th:text="${ grades.nameStudent }" style="color:#0000ff"></td>
+        <td th:text="${ grades.nameCourse }" style="color:#0000ff"></td>
+        <td th:text="${ grades.grades }" style="color:#0000ff"></td>
         </td>
     </tr>
     </tbody>
@@ -33,6 +35,27 @@
 <br/>
 <br/>
 
+
+<form   th:object="${newGrades}" method="POST">
+    <div class="col-sm-12">
+        <label><font color="gray">Grade ID</font></label>
+        <input type = "text" th:field="*{idGrades}"/>
+    </div>
+    <div class="col-sm-12">
+        <label><font color="gray">Student Name</font></label>
+        <input type = "text" th:field="*{nameStudent}"/>
+    </div>
+    <div class="col-sm-12">
+        <label><font color="gray">Course Name</font></label>
+        <input type = "text" th:field="*{nameCourse}"/>
+    </div>
+    <div class="col-sm-12">
+        <label><font color="gray">Student Grades</font></label>
+        <input type = "text" th:field="*{grades}"/>
+    </div>
+
+    <button type="submit" class = "btn btn-primary" name = "action" value="Add Grade">ADD Grade</button>
+    <button type="submit" class = "btn btn-primary" name = "action" value="Delete Grade">DELETE Grade</button></form>
 
 </body>
 
